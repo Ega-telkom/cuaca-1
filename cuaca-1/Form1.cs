@@ -62,11 +62,26 @@ namespace cuaca_1
 
                 string kota = weatherData["name"]?.ToString();
                 string suhu = weatherData["main"]["temp"]?.ToString();
+                string terasa = weatherData["main"]["feels_like"]?.ToString();
+                string kelembapan = weatherData["main"]["humidity"]?.ToString();
+                string tekanan = weatherData["main"]["pressure"]?.ToString();
+                string visibilitas = weatherData["visibility"]?.ToString();
+                string arah_angin = weatherData["wind"]["deg"]?.ToString();
+                string kecepatan_angin = weatherData["wind"]["speed"]?.ToString();
+                string awan = weatherData["clouds"]["all"]?.ToString();
                 string cuaca = weatherData["weather"]?[0]?["description"]?.ToString();
 
                 labelKota.Text = $"{kota}";
                 labelTemp.Text = $"{suhu} °C";
                 labelCuaca.Text = $"{cuaca}";
+
+                txtResult.Text = $"Terasa Seperti\t :{terasa} °C\r\n" +
+                    $"Kelembapan\t :{kelembapan}\r\n" +
+                    $"Tekanan\t\t :{tekanan} hPa\r\n" +
+                    $"Visibilitas\t :{visibilitas} km\r\n" +
+                    $"Arah Angin\t :{arah_angin}°\r\n" +
+                    $"Kecepatan Angin\t :{kecepatan_angin} m/d\r\n" +
+                    $"Awan\t\t :{awan}%\r\n";
             }
             catch (HttpRequestException httpEx)
             {
@@ -90,7 +105,7 @@ namespace cuaca_1
 
             if (string.IsNullOrEmpty(kota) || string.IsNullOrEmpty(api))
             {
-                MessageBox.Show("Data kurang lengkap");
+                MessageBox.Show("Nama kota dan kunci API harap diisi");
                 return;
             }
 
@@ -157,6 +172,50 @@ namespace cuaca_1
         private void labelTemp_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelKota_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtKota_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;       // Optional: suppress the beep
+                e.SuppressKeyPress = true;
+
+                // Trigger your city search button click manually
+                btnGeocode.PerformClick();
+            }
+        }
+
+        private void txtApiKey_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;       // Optional: suppress the beep
+                e.SuppressKeyPress = true;
+
+                // Trigger your city search button click manually
+                btnSaveAPI.PerformClick();
+            }
         }
     }
 }
