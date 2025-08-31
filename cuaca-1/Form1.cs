@@ -1,6 +1,7 @@
 using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.Reflection.Metadata;
 
 namespace cuaca_1
@@ -76,7 +77,7 @@ namespace cuaca_1
                 labelCuaca.Text = $"{cuaca}";
 
                 txtResult.Text = $"Terasa Seperti\t :{terasa} °C\r\n" +
-                    $"Kelembapan\t :{kelembapan}\r\n" +
+                    $"Kelembapan\t :{kelembapan}%\r\n" +
                     $"Tekanan\t\t :{tekanan} hPa\r\n" +
                     $"Visibilitas\t :{visibilitas} km\r\n" +
                     $"Arah Angin\t :{arah_angin}°\r\n" +
@@ -216,6 +217,20 @@ namespace cuaca_1
                 // Trigger your city search button click manually
                 btnSaveAPI.PerformClick();
             }
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://home.openweathermap.org/users/sign_in", // or your dynamic URL
+                UseShellExecute = true // important for .NET Core / .NET 5+
+            });
         }
     }
 }

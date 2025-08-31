@@ -41,6 +41,8 @@
             cmbResult = new ComboBox();
             btnSaveAPI = new Button();
             groupBox1 = new GroupBox();
+            linkLabel1 = new LinkLabel();
+            label1 = new Label();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
@@ -120,7 +122,7 @@
             txtResult.Name = "txtResult";
             txtResult.ReadOnly = true;
             txtResult.ScrollBars = ScrollBars.Vertical;
-            txtResult.Size = new Size(456, 229);
+            txtResult.Size = new Size(456, 178);
             txtResult.TabIndex = 6;
             txtResult.WordWrap = false;
             // 
@@ -140,7 +142,7 @@
             txtKota.Location = new Point(6, 21);
             txtKota.Margin = new Padding(3, 2, 3, 2);
             txtKota.Name = "txtKota";
-            txtKota.PlaceholderText = "Nama Tempat";
+            txtKota.PlaceholderText = "Jakarta, London, Madrid";
             txtKota.Size = new Size(208, 23);
             txtKota.TabIndex = 8;
             txtKota.TextChanged += textBox1_TextChanged;
@@ -181,15 +183,37 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(linkLabel1);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txtApiKey);
             groupBox1.Controls.Add(btnSaveAPI);
             groupBox1.Location = new Point(21, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(483, 59);
+            groupBox1.Size = new Size(483, 107);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Kunci API";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(6, 70);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(269, 15);
+            linkLabel1.TabIndex = 13;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "https://home.openweathermap.org/users/sign_in";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 55);
+            label1.Name = "label1";
+            label1.Size = new Size(277, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Daftar terlebih dahulu dan dapatkan kunci API-nya.";
             // 
             // groupBox2
             // 
@@ -199,7 +223,7 @@
             groupBox2.Controls.Add(btnGetWeather);
             groupBox2.Controls.Add(txtKota);
             groupBox2.Controls.Add(btnGeocode);
-            groupBox2.Location = new Point(21, 77);
+            groupBox2.Location = new Point(21, 125);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(483, 177);
             groupBox2.TabIndex = 13;
@@ -212,9 +236,9 @@
             groupBox3.Controls.Add(labelKota);
             groupBox3.Controls.Add(labelCuaca);
             groupBox3.Controls.Add(txtResult);
-            groupBox3.Location = new Point(21, 260);
+            groupBox3.Location = new Point(21, 308);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(483, 362);
+            groupBox3.Size = new Size(483, 314);
             groupBox3.TabIndex = 14;
             groupBox3.TabStop = false;
             groupBox3.Text = "Cuaca";
@@ -223,11 +247,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(544, 634);
+            ClientSize = new Size(526, 634);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form1";
             Text = "Cuaca";
             Load += Form1_Load_1;
@@ -257,5 +284,7 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
+        private Label label1;
+        private LinkLabel linkLabel1;
     }
 }
